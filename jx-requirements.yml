@@ -1,34 +1,73 @@
+autoUpdate:
+  enabled: true
+  schedule: 0 0 23 1/1 * ? *
+bootConfigURL: https://github.com/Dor-e/dor-e-jx-boot-config
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  project: ""
+  clusterName: dor-e-demo
+  environmentGitOwner: dor-e
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: dor-e-253716
   provider: gke
-  zone: ""
-gitops: true
+  zone: europe-west3-a
 environments:
-- key: dev
-- key: staging
-- key: production
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+gitops: true
 ingress:
   domain: ""
   externalDNS: false
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
     production: false
-kaniko: true
+repository: nexus
 secretStorage: local
 storage:
+  backup:
+    enabled: true
+    url: gs://dor-e-demo-backup
   logs:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://dor-e-demo-lts
   reports:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://dor-e-demo-reports
   repository:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://dor-e-demo-repository
+vault: {}
+velero:
+  namespace: velero
 versionStream:
-  ref: "master"
+  ref: v1.0.179
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: prow

@@ -1,0 +1,19 @@
+nexus:
+  enabled: false
+
+chartmuseum:
+  enabled: true
+  env:
+    open:
+      AUTH_ANONYMOUS_GET: false
+      DISABLE_API: false
+    secret:
+      BASIC_AUTH_USER: admin
+      BASIC_AUTH_PASS: admin1234
+  resources:
+    limits:
+      cpu: 120m
+      memory: 156Mi
+    requests:
+      cpu: 80m
+      memory: 100Mi
